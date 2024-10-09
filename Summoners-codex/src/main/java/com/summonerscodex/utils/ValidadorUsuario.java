@@ -1,0 +1,9 @@
+package com.summonerscodex.utils;
+
+public class ValidadorUsuario {
+
+    public static boolean esCorreoValido(String correo) {
+        String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        return correo.matches(regex);
+    }
+}

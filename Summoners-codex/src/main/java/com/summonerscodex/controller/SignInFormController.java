@@ -1,13 +1,11 @@
 package com.summonerscodex.controller;
 
-import com.summonerscodex.services.UsuarioService; // Asegúrate de importar tu servicio de usuario
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import com.summonerscodex.services.UsuarioService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
@@ -15,7 +13,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class SignInFormController implements Initializable {
 
@@ -30,59 +31,45 @@ public class SignInFormController implements Initializable {
     @FXML
     private CheckBox checkContraseñaSignIn;
 
-    private UsuarioService usuarioService; // Servicio de autenticación
+    private UsuarioService usuarioService;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        usuarioService = new UsuarioService(); // Inicializa el servicio
+        usuarioService = new UsuarioService();
         mascaraContraseña(txtContraseñaSignIn, txtContraseñaSignInMascara, checkContraseñaSignIn);
     }
 
-    // Método para mostrar/ocultar la contraseña
     public void mascaraContraseña(PasswordField pass, TextField text, CheckBox check) {
-        // Inicialmente oculta el campo de texto
         text.setVisible(false);
         text.setManaged(false);
-
-        // Vincula la visibilidad y la gestión del campo de texto a la selección del checkbox
+        
         text.managedProperty().bind(check.selectedProperty());
         text.visibleProperty().bind(check.selectedProperty());
-
-        // Sincroniza el texto del campo de contraseña con el campo de texto
+        
         text.textProperty().bindBidirectional(pass.textProperty());
 
-        // Añade un listener para el CheckBox que actualiza el campo de contraseña y el TextField
         check.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                // Si el CheckBox está seleccionado, se muestra el TextField
                 text.setText(pass.getText());
-                pass.setVisible(false); // Oculta el PasswordField
-                text.requestFocus(); // Pone el foco en el TextField
+                pass.setVisible(false);
+                text.requestFocus();
             } else {
-                // Si el CheckBox está deseleccionado, se oculta el TextField
                 pass.setText(text.getText());
-                pass.setVisible(true); // Muestra el PasswordField
+                pass.setVisible(true);
             }
         });
     }
 
-    // Método para manejar el evento de ingreso
     @FXML
     public void manejarIngreso(ActionEvent event) {
         String username = txtUsuarioSignIn.getText();
-        String password = txtContraseñaSignIn.getText(); // Obtiene la contraseña (enmascarada)
+        String password = txtContraseñaSignIn.getText();
 
-        // Verifica las credenciales
         boolean autenticado = usuarioService.autenticarUsuario(username, password);
-        
+
         if (autenticado) {
-            // Alerta de éxito
-        	cambiarAPantallaCampeones();
-            
-            // Aquí puedes redirigir al usuario a otra vista, por ejemplo:
-            // cambiarVistaAlTablero();
+            cambiarAPantallaCampeones();
         } else {
-            // Alerta de error
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error de inicio de sesión");
             alert.setHeaderText(null);
@@ -92,24 +79,33 @@ public class SignInFormController implements Initializable {
     }
 
     public void borradoTexto(ActionEvent e) {
-        txtUsuarioSignIn.setText("");
-        txtContraseñaSignInMascara.setText("");
-        txtContraseñaSignIn.setText("");
+        txtUsuarioSignIn.clear();
+        txtContraseñaSignInMascara.clear();
+        txtContraseñaSignIn.clear();
     }
+
     public void cambiarAPantallaCampeones() {
         try {
-            // Cargar el nuevo FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/summonerscodex/views/Pantalla_de_campeones.fxml"));
-            Parent root = loader.load();
-
-            // Crear una nueva escena con el nuevo contenido
-            Stage stage = (Stage) btnIngresar.getScene().getWindow(); // Obtén el escenario actual
-            stage.setScene(new Scene(root)); // Establece la nueva escena
-            stage.show(); // Muestra el nuevo escenario
-
-        } catch (Exception e) {
-            e.printStackTrace(); // Manejo de excepciones
-          
+            // Cargar la vista FXML usando el método loadForm
+            Parent pantallaCampeones = loadForm("/com/summonerscodex/views/Pantalla_de_campeones.fxml");
+            
+            // Obtener la ventana actual y cambiar la escena
+            Stage stage = (Stage) btnIngresar.getScene().getWindow();
+            stage.setScene(new Scene(pantallaCampeones));
+            stage.show();
+            
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No se pudo cambiar a la pantalla de campeones");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait();
         }
     }
+
+    private Parent loadForm(String url) throws IOException {    
+        return FXMLLoader.load(getClass().getResource(url));    
+    }
+
 }

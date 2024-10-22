@@ -1,5 +1,6 @@
 package com.summonerscodex.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,8 +9,8 @@ import org.slf4j.LoggerFactory;
 
 import com.summonerscodex.model.Usuario;
 import com.summonerscodex.services.MongoDBConexion;
-import com.summonerscodex.services.UsuarioService;
 import com.summonerscodex.utils.ValidadorUsuario;
+import com.summonerscodex.services.UsuarioService;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -90,21 +91,26 @@ public class SignUpFormController implements Initializable {
 
     public void cambiarAPantallaCampeones() {
         try {
-            // Cargar el nuevo FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/summonerscodex/views/Pantalla_de_campeones.fxml"));
-            Parent root = loader.load();
-
-            // Crear una nueva escena con el nuevo contenido
-            Stage stage = (Stage) btnIngresar.getScene().getWindow(); // Obtén el escenario actual
-            stage.setScene(new Scene(root)); // Establece la nueva escena
-            stage.show(); // Muestra el nuevo escenario
-
-        } catch (Exception e) {
-            e.printStackTrace(); // Manejo de excepciones
-            mostrarAlerta("Error", "No se pudo cargar la pantalla de campeones.");
+            // Cargar la vista FXML usando el método loadForm
+            Parent pantallaCampeones = loadForm("/com/summonerscodex/views/Pantalla_de_campeones.fxml");
+            
+            // Obtener la ventana actual y cambiar la escena
+            Stage stage = (Stage) btnIngresar.getScene().getWindow();
+            stage.setScene(new Scene(pantallaCampeones));
+            stage.show();
+            
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No se pudo cambiar a la pantalla de campeones");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait();
         }
     }
-
+    private Parent loadForm(String url) throws IOException {    
+        return FXMLLoader.load(getClass().getResource(url));    
+    }
     // Método para mostrar un mensaje de alerta
     private void mostrarAlerta(String titulo, String mensaje) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

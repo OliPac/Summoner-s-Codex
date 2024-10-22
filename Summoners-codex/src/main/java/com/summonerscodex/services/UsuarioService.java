@@ -11,60 +11,51 @@ import org.slf4j.LoggerFactory;
 
 public class UsuarioService {
     private static final Logger logger = LoggerFactory.getLogger(UsuarioService.class);
-    // Metodo para guardar usuario
+
     public String guardarUsuario(Usuario usuario) {
         MongoDatabase database = MongoDBConexion.getDatabase();
 
         if (database != null) {
             MongoCollection<Document> collection = database.getCollection("usuarios");
-
-            // Verificar si el usuario ya existe
             Document usuarioExistente = collection.find(Filters.eq("usuario", usuario.getUsuario())).first();
-            
-            // Verificar si el correo ya existe
             Document correoExistente = collection.find(Filters.eq("correo", usuario.getCorreo())).first();
 
             if (usuarioExistente != null) {
                 logger.warn("El usuario ya existe: " + usuario.getUsuario());
-                return "El nombre de usuario ya está en uso. Por favor, elige otro."; // Mensaje de error para el usuario
+                return "El nombre de usuario ya está en uso. Por favor, elige otro.";
             } else if (correoExistente != null) {
                 logger.warn("El correo ya está en uso: " + usuario.getCorreo());
-                return "El correo ya está en uso. Por favor, utiliza otro."; // Mensaje de error para el usuario
+                return "El correo ya está en uso. Por favor, utiliza otro.";
             } else {
-                // Insertar un nuevo usuario si no existe
                 Document nuevoUsuario = new Document("usuario", usuario.getUsuario())
                         .append("correo", usuario.getCorreo())
                         .append("contraseña", usuario.getContraseña());
                 collection.insertOne(nuevoUsuario);
-
                 logger.info("Usuario registrado con éxito: " + usuario.getUsuario());
-                return "Registro exitoso."; // Mensaje de éxito para el usuario
+                return "Registro exitoso.";
             }
         } else {
             logger.error("No se pudo obtener la base de datos de MongoDB.");
-            return "No se pudo conectar a la base de datos. Inténtalo más tarde."; // Mensaje de error para la base de datos
+            return "No se pudo conectar a la base de datos. Inténtalo más tarde.";
         }
     }
+
     public boolean autenticarUsuario(String username, String password) {
         MongoDatabase database = MongoDBConexion.getDatabase();
         
         if (database != null) {
-            MongoCollection<Document> collection = database.getCollection("usuarios"); // Nombre de tu colección de usuarios
-
+            MongoCollection<Document> collection = database.getCollection("usuarios");
             try (MongoCursor<Document> cursor = collection.find(Filters.eq("usuario", username)).iterator()) {
                 if (cursor.hasNext()) {
                     Document userDoc = cursor.next();
-                    String storedPassword = userDoc.getString("contraseña"); // Asumiendo que la contraseña se almacena así
-                    
-                    return password.equals(storedPassword); // Comparar las contraseñas
+                    String storedPassword = userDoc.getString("contraseña");
+                    return password.equals(storedPassword);
                 }
             }
         } else {
-            System.out.println("No se pudo obtener la base de datos de MongoDB.");
+            logger.error("No se pudo obtener la base de datos de MongoDB.");
         }
         
-        return false; // Retorna false si no existe el usuario o si la contraseña no coincide
+        return false;
     }
-
-
 }

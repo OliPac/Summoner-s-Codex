@@ -1,6 +1,6 @@
 package app;
 
-import com.summonerscodex.services.icons.ChampionImageUrlExtractor;
+
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +14,8 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         // Cargar el archivo FXML
         Parent root = FXMLLoader.load(getClass().getResource("/com/summonerscodex/views/MainView.fxml"));
-        //Cargar URL de iconos
-        ChampionImageUrlExtractor.guardarUrlsCampeones();
+    
+       
         // Crear la escena y asignarla al escenario
         Scene scene = new Scene(root);
         stage.setScene(scene);

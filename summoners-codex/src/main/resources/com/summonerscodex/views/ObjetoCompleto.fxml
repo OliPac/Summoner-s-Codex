@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" spacing="30" style="-fx-padding: 40; -fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.summonerscodex.controller.ObjetoCompletoController">
+    <children>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox alignment="TOP_CENTER" spacing="30" style="-fx-padding: 20;">
+                <!-- Imagen y Título del Objeto -->
+                <HBox alignment="CENTER_LEFT" spacing="30">
+                    <children>
+                        <ImageView fx:id="objectImage" fitHeight="300" fitWidth="300" />
+                        <VBox alignment="CENTER_LEFT" spacing="15">
+                            <children>
+                                <Label fx:id="objectName" style="-fx-font-size: 48; -fx-font-weight: bold; -fx-text-fill: #333;" text="Nombre del Objeto" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                
+                <!-- Descripción y Texto Plano -->
+                <VBox spacing="20">
+                    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #333;" text="Descripción:" />
+                    <Label fx:id="objectDescription" style="-fx-font-size: 22; -fx-text-fill: #555;" wrapText="true" maxWidth="1600" />
+                    
+                    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #333;" text="Descripción Corta:" />
+                    <Label fx:id="objectPlainText" style="-fx-font-size: 22; -fx-text-fill: #555;" wrapText="true" maxWidth="1600" />
+                </VBox>
+                
+                <!-- Transformaciones y Costo de Oro -->
+                <VBox spacing="20">
+                    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #333;" text="Transformaciones:" />
+                    
+                    <!-- Nueva sección para mostrar imágenes de transformaciones -->
+                    <HBox fx:id="objectTransformationsImages" spacing="10" alignment="CENTER_LEFT">
+                        <!-- Aquí se añadirán dinámicamente las imágenes de transformaciones desde el controlador -->
+                    </HBox>
+                    
+                    <Label fx:id="objectTransformations" style="-fx-font-size: 22; -fx-text-fill: #555;" wrapText="true" maxWidth="1600" />
+                    
+                    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #333;" text="Costo de Oro:" />
+                    <HBox spacing="15">
+                        <Label fx:id="objectGoldBase" style="-fx-font-size: 22; -fx-text-fill: #555;" />
+                    </HBox>
+                    
+                    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #333;" text="Venta:" />
+                    <Label fx:id="objectGoldSell" style="-fx-font-size: 22; -fx-text-fill: #555;" />
+                </VBox>
+                
+                <!-- Estadísticas -->
+                <VBox spacing="20">
+                    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #333;" text="Estadísticas:" />
+                    <Label fx:id="objectStats" style="-fx-font-size: 22; -fx-text-fill: #555;" wrapText="true" maxWidth="1600" />
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </children>
+</VBox>  

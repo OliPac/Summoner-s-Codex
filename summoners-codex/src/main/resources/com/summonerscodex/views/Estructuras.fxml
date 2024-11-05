@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane style="-fx-background-color: #1c1c1c;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.summonerscodex.controller.EstructurasController">
+    <!-- Contenedor Principal -->
+    <ScrollPane fitToWidth="true" prefHeight="800" prefWidth="1500">
+        <VBox prefWidth="800" spacing="20" style="-fx-background-color: #2c3e50;">
+            
+            <!-- Título Principal -->
+            <Label fx:id="titleLabel" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #f1c40f;" text="Estructuras en League of Legends" />
+            <Button fx:id="btnRegresar" layoutX="50" layoutY="50" onAction="#RegresarMenu" style="-fx-background-color: #f1c40f; -fx-text-fill: #1c1c1c;" text="Regresar al Mapa">
+                <font>
+                    <Font name="System Bold Italic" size="26.0" />
+                </font>
+            </Button>
+
+            <!-- Sección de la Base -->
+            <VBox spacing="10" style="-fx-background-color: #2c3e50; -fx-border-color: #333; -fx-padding: 10;">
+                <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #f1c40f;" text="La Base" />
+                
+                <!-- Tienda -->
+                <HBox spacing="15">
+                    <ImageView fx:id="shopImage" fitHeight="500" fitWidth="768">
+                        <Image url="@../imagenes/base_tienda.jpg" />
+                    </ImageView>
+                    <Label prefWidth="700.0" style="-fx-font-size: 26px; -fx-text-fill: #ecf0f1;" text="La tienda es un componente esencial donde los jugadores pueden comprar objetos que mejoran las estadísticas de sus campeones. Estos objetos son cruciales para el desarrollo del juego, ya que pueden proporcionar poder de ataque, poder de habilidad, resistencia, velocidad de movimiento y otros atributos. Elegir los objetos adecuados en función de la situación del juego puede marcar la diferencia entre una victoria y una derrota, permitiendo a los jugadores adaptarse a las estrategias del equipo enemigo." wrapText="true" />
+                </HBox>
+                
+                <!-- Imagen de la Base -->
+                <HBox spacing="15">
+                    <ImageView fx:id="baseImage" fitHeight="500" fitWidth="768">
+                        <Image url="@../imagenes/base.jpg" />
+                    </ImageView>
+                    <Label prefWidth="700.0" style="-fx-font-size: 26px; -fx-text-fill: #ecf0f1;" text="La base en League of Legends es donde los campeones reaparecen tras morir. Este lugar sagrado contiene estructuras clave como el Nexo, las Torres y el Inhibidor. La base no solo actúa como un refugio, sino que también proporciona recursos y oportunidades para planificar estrategias de ataque. Destruir el Nexo es el objetivo principal del juego, y la coordinación entre los jugadores es crucial para lograrlo, ya que cada segundo cuenta en la lucha por la victoria." wrapText="true" />
+                </HBox>
+            </VBox>
+
+            <!-- Sección de las Líneas -->
+            <VBox spacing="10" style="-fx-background-color: #2c3e50; -fx-border-color: #333; -fx-padding: 10;">
+                <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #f1c40f;" text="Las Líneas" />
+                
+                <!-- Sección de la Línea Superior -->
+                <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #f1c40f;" text="Top" />
+                <HBox spacing="15">
+                    <ImageView fx:id="topLaneTier1Image" fitHeight="500" fitWidth="768">
+                        <Image url="@../imagenes/torre_grado1_top.jpg" />
+                    </ImageView>
+                    <Label prefWidth="700" style="-fx-font-size: 26px; -fx-text-fill: #ecf0f1;" text="La línea superior es un área donde generalmente se colocan los campeones de tanque o luchadores. Estos campeones suelen ser resistentes y capaces de aguantar mucho daño. Controlar esta línea es crucial, ya que ofrece una ruta directa hacia la base enemiga y es donde se producen muchas de las peleas clave. Las torres de grado 1 tienen 1,500 de salud, 30 de armadura y causan 60 de daño por ataque, lo que las convierte en una barrera formidable para cualquier equipo." wrapText="true" />
+                </HBox>
+                <HBox spacing="15">
+                    <ImageView fx:id="topLaneTier2Image" fitHeight="500" fitWidth="768">
+                        <Image url="@../imagenes/torre_grado2_top.jpg" />
+                    </ImageView>
+                    <Label prefWidth="700" style="-fx-font-size: 26px; -fx-text-fill: #ecf0f1;" text="Cada torre proporciona defensa y control del área. Las torres de grado 2 tienen 2,500 de salud, 50 de armadura y causan 80 de daño por ataque. Destruirlas otorga oro a los jugadores y permite avanzar hacia el Nexo enemigo. La coordinación entre los jugadores es esencial para llevar a cabo un asedio efectivo y derribar estas estructuras que son claves para el éxito en el juego." wrapText="true" />
+                </HBox>
+
+                <!-- Sección de la Línea Media -->
+                <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #f1c40f;" text="Mid" />
+                <HBox spacing="15">
+                    <ImageView fx:id="midLaneTier1Image" fitHeight="500" fitWidth="768">
+                        <Image url="@../imagenes/torre_grado1_mid.jpg" />
+                    </ImageView>
+                    <Label prefWidth="700" style="-fx-font-size: 26px; -fx-text-fill: #ecf0f1;" text="La línea media es un camino estratégico donde los campeones luchan por el control y buscan abrirse paso hacia el Nexo enemigo. Aquí, los campeones de alto daño, como magos y asesinos, son comunes. Las torres de grado 1 tienen 1,500 de salud, 30 de armadura y causan 60 de daño por ataque. Controlar esta línea no solo permite asegurar el camino hacia la base enemiga, sino que también proporciona visión y control sobre el mapa." wrapText="true" />
+                </HBox>
+                <HBox spacing="15">
+                    <ImageView fx:id="midLaneTier2Image" fitHeight="500" fitWidth="768">
+                        <Image url="@../imagenes/torre_grado2_mid.jpg" />
+                    </ImageView>
+                    <Label prefWidth="700" style="-fx-font-size: 26px; -fx-text-fill: #ecf0f1;" text="Las torres de grado 2 tienen 2,500 de salud, 50 de armadura y causan 80 de daño por ataque. Estas torres son esenciales para proteger el camino hacia la base y evitar emboscadas del equipo enemigo. Además, el control de la línea media permite a los equipos acceder a objetivos clave como el Dragón y el Barón Nashor, que son vitales para conseguir una ventaja en el juego." wrapText="true" />
+                </HBox>
+
+                <!-- Sección de la Línea Inferior -->
+                <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #f1c40f;" text="Bot" />
+                <HBox spacing="15">
+                    <ImageView fx:id="botLaneTier1Image" fitHeight="500" fitWidth="768">
+                        <Image url="@../imagenes/torre_grado1_bot.jpg" />
+                    </ImageView>
+                    <Label prefWidth="700" style="-fx-font-size: 26px; -fx-text-fill: #ecf0f1;" text="La línea inferior es crucial para la estrategia de juego y también cuenta con torres que defienden el acceso al Nexo. Aquí suelen jugar los tiradores y los soportes, quienes son responsables de infligir daño a distancia y proteger a su equipo. Las torres de grado 1 tienen 1,500 de salud, 30 de armadura y causan 60 de daño por ataque, y su caída puede abrir el camino hacia el Nexo enemigo." wrapText="true" />
+                </HBox>
+                <HBox spacing="15">
+                                        <ImageView fx:id="botLaneTier2Image" fitHeight="500" fitWidth="768">
+                        <Image url="@../imagenes/torre_grado2_bot.jpg" />
+                    </ImageView>
+                    <Label prefWidth="700" style="-fx-font-size: 26px; -fx-text-fill: #ecf0f1;" text="Dominar esta línea es clave para asegurar la victoria en el juego. Las torres de grado 2 tienen 2,500 de salud, 50 de armadura y causan 80 de daño por ataque. Mantener el control de esta línea no solo ayuda a proteger el Nexo, sino que también permite generar presión en otras líneas y asegurar objetivos en el mapa." wrapText="true" />
+                </HBox>
+
+                <!-- Sección del Inhibidor -->
+                <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #f1c40f;" text="Inhibidor" />
+                <HBox spacing="15">
+                    <ImageView fx:id="inhibitorTopImage" fitHeight="500" fitWidth="768">
+                        <Image url="@../imagenes/inibidor_top.jpg" />
+                    </ImageView>
+                    <Label prefWidth="700" style="-fx-font-size: 26px; -fx-text-fill: #ecf0f1;" text="Los inhibidores tienen 3,000 de salud y 40 de armadura. Su destrucción permite que el equipo que lo logra genere súbditos mejorados, conocidos como super súbditos, que ayudan en el asedio de la base enemiga. Estos super súbditos son más fuertes que los súbditos normales y pueden cambiar el rumbo de una partida, forzando al equipo enemigo a defenderse en lugar de atacar." wrapText="true" />
+                </HBox>
+                <HBox spacing="15">
+                    <ImageView fx:id="inhibitorMidImage" fitHeight="500" fitWidth="768">
+                        <Image url="@../imagenes/inibidor_mid.jpg" />
+                    </ImageView>
+                    <Label prefWidth="700" style="-fx-font-size: 26px; -fx-text-fill: #ecf0f1;" text="Destruir un inhibidor es un paso crucial para asegurar la victoria, ya que los super súbditos son mucho más poderosos y pueden desviar la atención del equipo enemigo. Aprovechar la ventaja de un inhibidor destruido puede permitir al equipo avanzar hacia el Nexo con mayor facilidad, ya que los super súbditos actúan como un escudo, absorbiendo daño mientras los campeones atacan." wrapText="true" />
+                </HBox>
+                <HBox spacing="15">
+                    <ImageView fx:id="inhibitorBotImage" fitHeight="500" fitWidth="768">
+                        <Image url="@../imagenes/inibidor_bot.jpg" />
+                    </ImageView>
+                    <Label prefWidth="700" style="-fx-font-size: 26px; -fx-text-fill: #ecf0f1;" text="La clave para ganar es coordinar con tu equipo y aprovechar la ventaja que otorgan los inhibidores destruidos para avanzar hacia el Nexo enemigo. La sincronización en los ataques y la comunicación son esenciales para maximizar el impacto de los super súbditos en el asedio de la base, ya que permiten establecer presión constante en el equipo rival." wrapText="true" />
+                </HBox>
+
+                <!-- Sección del Nexo -->
+                <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #f1c40f;" text="Nexo" />
+                <HBox spacing="15">
+                    <ImageView fx:id="nexusImage" fitHeight="500" fitWidth="768">
+                        <Image url="@../imagenes/base.jpg" />
+                    </ImageView>
+                    <Label prefWidth="700" style="-fx-font-size: 26px; -fx-text-fill: #ecf0f1;" text="El Nexo es la estructura final que debe ser destruida para ganar el juego. Tiene 5,000 de salud y 100 de armadura. La destrucción del Nexo pone fin a la partida y determina al ganador. Proteger el Nexo es la prioridad máxima del equipo defensor, ya que su caída representa la derrota. Coordinar ataques, utilizar habilidades y estrategias adecuadas es esencial para llevar a cabo un asalto exitoso contra esta última barrera en el camino hacia la victoria." wrapText="true" />
+                </HBox>
+
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</AnchorPane>

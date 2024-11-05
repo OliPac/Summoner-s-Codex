@@ -13,51 +13,54 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-
 public class MainViewController implements Initializable {
-              
+
     @FXML
-    private Button btnIniciarSesion, btnRegistrarse;
-    
+    private Button btnIniciarSesion, btnRegistrarse; 
+
     @FXML
     private StackPane containerForm;
-    
+
     private VBox signInForm, signUpForm; 
-    
+
+    // Maneja los eventos de clic en los botones para alternar entre formularios de inicio de sesión y registro
     @FXML
-    public void actionEvent(ActionEvent e){
-        
-        Object evt = e.getSource();
-        
-        if(evt.equals(btnIniciarSesion)){
-            signInForm.setVisible(true);
-            signUpForm.setVisible(false);                    
-        }else if(evt.equals(btnRegistrarse)){
-            signUpForm.setVisible(true);                                
-            signInForm.setVisible(false);
+    public void actionEvent(ActionEvent e) {
+        if (e.getSource() == btnIniciarSesion) {
+            mostrarFormularioIniciarSesion();
+        } else if (e.getSource() == btnRegistrarse) {
+            mostrarFormularioRegistrarse();
         }
-        
     }
-    
-    
+
+    // Método de inicialización llamado después de que se haya cargado el FXML
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         try {
-            signInForm = loadForm("/com/summonerscodex/views/SignInForm.fxml");
-            signUpForm = loadForm("/com/summonerscodex/views/SignUpForm.fxml");    
-            containerForm.getChildren().addAll(signInForm, signUpForm);
+            signInForm = cargarFormulario("/com/summonerscodex/views/SignInForm.fxml");
+            signUpForm = cargarFormulario("/com/summonerscodex/views/SignUpForm.fxml");       
+            containerForm.getChildren().addAll(signInForm, signUpForm);              
             signInForm.setVisible(true);
             signUpForm.setVisible(false);
         } catch (IOException ex) {
-            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, "Error al cargar los formularios", ex);
         }
-        
-    }    
-       
-    private VBox loadForm(String url) throws IOException{    
-        return (VBox) FXMLLoader.load(getClass().getResource(url));    
     }
-    
-    
+
+    // Carga un formulario desde el archivo FXML especificado
+    private VBox cargarFormulario(String url) throws IOException {
+        return FXMLLoader.load(getClass().getResource(url)); // Cargar el diseño FXML
+    }
+
+    // Mostrar el formulario de inicio de sesión y ocultar el formulario de registro
+    private void mostrarFormularioIniciarSesion() {
+        signInForm.setVisible(true);
+        signUpForm.setVisible(false);
+    }
+
+    // Mostrar el formulario de registro y ocultar el formulario de inicio de sesión
+    private void mostrarFormularioRegistrarse() {
+        signUpForm.setVisible(true);
+        signInForm.setVisible(false);
+    }
 }

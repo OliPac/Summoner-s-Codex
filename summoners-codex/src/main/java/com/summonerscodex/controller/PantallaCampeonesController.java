@@ -1,16 +1,25 @@
 package com.summonerscodex.controller;
 
-import com.summonerscodex.services.icons.CampeonesImageServices;
+import com.summonerscodex.model.Campeon;
+import com.summonerscodex.services.CampeonesServices;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,39 +27,127 @@ public class PantallaCampeonesController {
 
     @FXML
     private GridPane imageContainer;
+    
+    @FXML
+    private Button btnRegresar;
 
     @FXML
-    private TextField textFieldBuscar;  // Asegúrate de que el TextField esté vinculado
+    private TextField textFieldBuscar;  
 
-    private List<String> todasLasImagenes;  // Lista que contiene todas las URLs de las imágenes
-    private CampeonesImageServices campeonImageServices = new CampeonesImageServices();
+    private List<Campeon> todosLosCampeones;  // Lista que contiene todos los campeones
+    private CampeonesServices campeonImageServices = new CampeonesServices();
 
-    public void addImages(List<String> imageUrls) {
-        imageContainer.getChildren().clear();
+    public void addImages(List<Campeon> campeones) {
+        imageContainer.getChildren().clear();  // Limpiar el contenedor antes de agregar nuevas imágenes
 
-        int columnCount = 11; // Número de columnas deseadas
-        int imageCount = imageUrls.size();
+        int columnCount = 11;
+        int imageCount = campeones.size();
 
-        int rowCount = (int) Math.ceil((double) imageCount / columnCount);
-
+        // Se necesita realizar las operaciones de UI dentro de Platform.runLater
         for (int i = 0; i < imageCount; i++) {
+            final int index = i;  // Necesitamos capturar el índice para usarlo dentro del nuevo hilo
+            Campeon campeon = campeones.get(i);
+            
+            // Crear un VBox para contener la imagen y la etiqueta
+            VBox vbox = new VBox();
+            vbox.setSpacing(5); // Espacio entre la imagen y la etiqueta
+
             ImageView imageView = new ImageView();
-            Image image = new Image(imageUrls.get(i));
-            imageView.setImage(image);
+
+            // Configuración del ImageView (carga de imagen, tamaño, etc.)
             imageView.setFitHeight(120);
             imageView.setFitWidth(120);
             imageView.setPreserveRatio(true);
+            imageView.setOnMouseClicked(event -> manejarClickEnCampeon(campeon)); // Manejar clic
 
-            int row = i / columnCount;
-            int column = i % columnCount;
+            // Cargar la imagen en un hilo separado
+            new Thread(() -> {
+                Image image = new Image(campeon.getImageUrl()); // Cargar la imagen
+                // Actualizar la UI en el hilo de la aplicación
+                Platform.runLater(() -> {
+                    imageView.setImage(image);
+                    
+                    // Crear la etiqueta con el nombre del campeón
+                    Label label = new Label(campeon.getName());
+                    label.setWrapText(true); // Permitir que el texto se ajuste
+                    label.setStyle("-fx-font-size: 14;");
+                    label.setTextFill(Color.WHITE);
 
-            imageContainer.add(imageView, column, row);
+                    // Añadir la imagen y la etiqueta al VBox
+                    vbox.getChildren().addAll(imageView, label);
+
+                    int row = index / columnCount;
+                    int column = index % columnCount;
+
+                    // Agregar el VBox al GridPane
+                    imageContainer.add(vbox, column, row);
+                });
+            }).start(); // Inicia el hilo para cargar la imagen
+        }
+    }
+
+
+    private void manejarClickEnCampeon(Campeon campeon) {
+        try {
+            // Cargar el FXML de la ventana del campeón
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/summonerscodex/views/CampeonCompleto.fxml"));
+            Parent root = loader.load();
+
+            // Obtener el controlador de la nueva ventana
+            CampeonCompletoController controller = loader.getController();
+
+            // Pasar el campeón al controlador
+            controller.setCampeonInfo(campeon);
+
+            // Crear una nueva escena y mostrarla
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL); // La ventana será modal
+            stage.setTitle(campeon.getName());
+            stage.setScene(new Scene(root));
+
+            // Ajustar la ventana al tamaño de la pantalla
+            javafx.geometry.Rectangle2D screenBounds = javafx.stage.Screen.getPrimary().getVisualBounds();
+            stage.setX(screenBounds.getMinX());
+            stage.setY(screenBounds.getMinY());
+            stage.setWidth(screenBounds.getWidth());
+            stage.setHeight(screenBounds.getHeight());
+            stage.setFullScreen(true);
+            // Mostrar la ventana
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error al abrir la ventana del campeón: " + e.getMessage());
         }
     }
 
     public void cargarImagenes() {
-        todasLasImagenes = campeonImageServices.obtenerUrlsDesdeMongoDB();  // Cargar todas las imágenes una sola vez
-        addImages(todasLasImagenes);  // Añadir todas las imágenes inicialmente
+        Task<List<Campeon>> cargarImagenesTask = new Task<>() {
+            @Override
+            protected List<Campeon> call() throws Exception {
+                // Cargar todos los campeones desde la base de datos
+                return campeonImageServices.obtenerCampeonesDesdeDataDragon();
+            }
+
+            @Override
+            protected void succeeded() {
+                // Cuando se complete la carga de campeones, se actualiza la lista y se añaden a la vista
+                try {
+                    todosLosCampeones = get();
+                    addImages(todosLosCampeones);
+                } catch (Exception e) {
+                    System.err.println("Error al obtener los campeones: " + e.getMessage());
+                }
+            }
+
+            @Override
+            protected void failed() {
+                // Manejo de errores en caso de que la carga falle
+                Throwable e = getException();
+                System.err.println("Error al cargar campeones: " + e.getMessage());
+            }
+        };
+
+        new Thread(cargarImagenesTask).start();  // Inicia el Task en un hilo separado
     }
 
     @FXML
@@ -63,6 +160,7 @@ public class PantallaCampeonesController {
             stage.setY(screenBounds.getMinY());
             stage.setWidth(screenBounds.getWidth());
             stage.setHeight(screenBounds.getHeight());
+            stage.setMaximized(true);
         });
 
         cargarImagenes();  // Cargar las imágenes al iniciar
@@ -73,10 +171,28 @@ public class PantallaCampeonesController {
 
     // Método para filtrar imágenes según el texto introducido en el TextField
     private void filtrarImagenesPorNombre(String filtro) {
-        List<String> imagenesFiltradas = todasLasImagenes.stream()
-            .filter(url -> url.toLowerCase().contains(filtro.toLowerCase()))  // Filtrar las imágenes que coincidan con el nombre del campeón
+        List<Campeon> campeonesFiltrados = todosLosCampeones.stream()
+            .filter(campeon -> campeon.getName().toLowerCase().contains(filtro.toLowerCase()))  // Filtrar los campeones que coincidan con el nombre
             .collect(Collectors.toList());
 
-        addImages(imagenesFiltradas);  // Actualizar el GridPane con las imágenes filtradas
+        addImages(campeonesFiltrados);  // Actualizar el GridPane con las imágenes filtradas
+    }
+
+    @FXML
+    private void RegresarMenu() {
+        try {
+            // Cargar el FXML de la ventana de selección
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/summonerscodex/views/Seleccion_de_pantalla.fxml"));
+            Parent root = loader.load();
+
+            // Obtener la referencia de la ventana actual
+            Stage stage = (Stage) imageContainer.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setFullScreen(true);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error al regresar a la pantalla de selección: " + e.getMessage());
+        }
     }
 }

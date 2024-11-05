@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane fx:id="root" style="-fx-background-color: #1c1c1c;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.summonerscodex.controller.Seleccion_de_pantallaController">
+    <!-- Contenedor de botones de navegación -->
+    <left>
+        <HBox alignment="TOP_LEFT" spacing="10">
+            <Button fx:id="leftButton" style="-fx-background-color: #f1c40f; -fx-text-fill: #1c1c1c;" text="&lt;&lt;" />
+            <Button fx:id="rightButton" style="-fx-background-color: #f1c40f; -fx-text-fill: #1c1c1c;" text="&gt;&gt;" />
+        </HBox>
+    </left>
+
+    <!-- Contenedor de carrusel con desplazamiento controlado -->
+    <center>
+        <ScrollPane fx:id="scrollPane" fitToHeight="true" hbarPolicy="NEVER" vbarPolicy="NEVER">
+            <HBox fx:id="carouselContainer" alignment="CENTER" spacing="20" style="-fx-background-color: #1c1c1c;" />
+        </ScrollPane>
+    </center>
+</BorderPane>

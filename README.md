@@ -22,4 +22,4 @@ Este proyecto es una aplicación multiplataforma que funciona como una wiki de L
 
 
 #Instalación
-Todavía en proceso
+Es un ejecutable doble click y a disfrutar

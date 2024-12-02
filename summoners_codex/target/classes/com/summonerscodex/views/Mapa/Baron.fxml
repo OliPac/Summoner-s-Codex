@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane style="-fx-background-color: #1c1c1c;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.summonerscodex.controller.Mapa.BaronController">
+    <Button fx:id="btnRegresar" layoutX="50" layoutY="20" onAction="#RegresarMenu" style="-fx-background-color: #f1c40f; -fx-text-fill: black; -fx-font-size: 18; -fx-padding: 10; -fx-background-radius: 5;" text="Regresar al Mapa" />
+    
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="70" prefHeight="750.0" prefWidth="1500.0">
+        <VBox prefWidth="600" spacing="20" style="-fx-background-color: #1c1c1c; -fx-padding: 20;">
+            
+            <VBox alignment="CENTER" style="-fx-background-color: #333333; -fx-padding: 20;">
+                <Label fx:id="titleLabel" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #f1c40f;" text="Campamentos de la Jungla" />
+            </VBox>
+
+            <!-- Larvas del Vacío -->
+            <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 5);">
+                <ImageView fx:id="larvasImage" fitHeight="400.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imagenes/campamento_larvas_vacio.jpg" />
+                    </image>
+                </ImageView>
+                <VBox spacing="10">
+                    <Label style="-fx-text-fill: #f1c40f; -fx-font-size: 28;" text="Larvas del Vacío" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Vida: 1500 - 3000 (según el nivel)" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Beneficio: Otorgan 100-150 de oro al derrotarlos." />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Daño de ataque: 40 − 120 (basado en el nivel)" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Velocidad de ataque: 0.5" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Alcance: 150" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Salen dos veces por partida" />
+                </VBox>
+            </HBox>
+
+            <!-- Heraldo -->
+            <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 5);">
+                <ImageView fx:id="heraldoImage" fitHeight="400.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imagenes/campamento_heraldo.png" />
+                    </image>
+                </ImageView>
+                <VBox spacing="10">
+                    <Label style="-fx-text-fill: #f1c40f; -fx-font-size: 28;" text="Heraldo" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Vida: 5000" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Beneficio: Otorga un Heraldo que puede destruir torres." />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Daño de ataque: 100 − 300 (basado en el nivel)" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Velocidad de ataque: 0.65" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Alcance: 150" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Aparece al minuto 14" />
+                </VBox>
+            </HBox>
+
+            <!-- Barón -->
+            <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 5);">
+                <ImageView fx:id="baronImage" fitHeight="400.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imagenes/campamento_baron.jpg" />
+                    </image>
+                </ImageView>
+                <VBox spacing="10">
+                    <Label style="-fx-text-fill: #f1c40f; -fx-font-size: 28;" text="Barón Nashor" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Vida: 10000" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Beneficio: Otorga un gran poder y mejora a los súbditos." />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Daño de ataque: 150 − 500 (basado en el nivel)" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Velocidad de ataque: 0.75" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Alcance: 150" />
+                       <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Aparece al minuto 20" />
+                </VBox>
+            </HBox>
+
+            <!-- Escurridizo de la Grieta -->
+            <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 5);">
+                <ImageView fx:id="escurridizoImage" fitHeight="400.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imagenes/scuttle_crab.jpg" />
+                    </image>
+                </ImageView>
+                <VBox spacing="10">
+                    <Label style="-fx-text-fill: #f1c40f; -fx-font-size: 28;" text="Escurridizo de la Grieta" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Vida: 900" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Beneficio: Otorga visión y un escudo." />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Daño de ataque: 20 − 60 (basado en el nivel)" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Velocidad de ataque: 0.8" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Alcance: 150" />
+                </VBox>
+            </HBox>
+
+        </VBox>
+    </ScrollPane>
+</AnchorPane>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane style="-fx-background-color: #1c1c1c;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.summonerscodex.controller.Mapa.DragonesController">
+    <Button fx:id="btnRegresar" layoutX="50" layoutY="20" onAction="#RegresarMenu" style="-fx-background-color: #f1c40f; -fx-text-fill: black; -fx-font-size: 18; -fx-padding: 10; -fx-background-radius: 5;" text="Regresar al Mapa" />
+    
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="70" prefHeight="750.0" prefWidth="1500.0">
+        <VBox prefWidth="600" spacing="20" style="-fx-background-color: #1c1c1c; -fx-padding: 20;">
+            
+            <VBox alignment="CENTER" style="-fx-background-color: #333333; -fx-padding: 20;">
+                <Label fx:id="titleLabel" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #f1c40f;" text="Dragones en League of Legends" />
+            </VBox>
+
+            <!-- Dragón Infernal -->
+            <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 5);">
+                <ImageView fx:id="dragonFuegoImage" fitHeight="150" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imagenes/iconoDrakeInfernal.jpg" />
+                    </image>
+                </ImageView>
+                <VBox spacing="10">
+                    <Label style="-fx-text-fill: #f1c40f; -fx-font-size: 28;" text="Dragón Infernal" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Vida: 5730 - 10290" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Beneficio: +4-16% en daño de ataque y habilidad." />
+                </VBox>
+            </HBox>
+
+            <!-- Dragón de Océano -->
+            <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 5);">
+                <ImageView fx:id="dragonAguaImage" fitHeight="150" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imagenes/dragon_oceano.jpg" />
+                    </image>
+                </ImageView>
+                <VBox spacing="10">
+                    <Label style="-fx-text-fill: #f1c40f; -fx-font-size: 28;" text="Dragón de Océano" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Vida: 5730 - 10290" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Beneficio: +2.5-10% de regeneración de vida perdida." />
+                </VBox>
+            </HBox>
+
+            <!-- Dragón de Montaña -->
+            <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 5);">
+                <ImageView fx:id="dragonMontanaImage" fitHeight="150" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imagenes/dragon_montaña.jpg" />
+                    </image>
+                </ImageView>
+                <VBox spacing="10">
+                    <Label style="-fx-text-fill: #f1c40f; -fx-font-size: 28;" text="Dragón de Montaña" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Vida: 5730 - 10290" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Beneficio: +6-24% de resistencia a daño físico y mágico." />
+                </VBox>
+            </HBox>
+
+            <!-- Dragón de Nube -->
+            <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 5);">
+                <ImageView fx:id="dragonNubeImage" fitHeight="150" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imagenes/Cloud_DrakeSquare.jpg" />
+                    </image>
+                </ImageView>
+                <VBox spacing="10">
+                    <Label style="-fx-text-fill: #f1c40f; -fx-font-size: 28;" text="Dragón de Nube" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Vida: 5730 - 10290" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Beneficio: +3-12% de velocidad de movimiento fuera de combate." />
+                </VBox>
+            </HBox>
+
+            <!-- Dragón Hextech -->
+            <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 5);">
+                <ImageView fx:id="dragonHextechImage" fitHeight="150" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imagenes/dragona_hextech.jpg" />
+                    </image>
+                </ImageView>
+                <VBox spacing="10">
+                    <Label style="-fx-text-fill: #f1c40f; -fx-font-size: 28;" text="Dragón Hextech" />
+                                      <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Vida: 5730 - 10290" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Beneficio: +6-24% en velocidad de ataque y reducción de enfriamiento." />
+                </VBox>
+            </HBox>
+
+            <!-- Dragón Tecnoquímico -->
+            <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 5);">
+                <ImageView fx:id="dragonTecnoquimicoImage" fitHeight="150" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imagenes/Chemtech_DrakeSquare.jpg" />
+                    </image>
+                </ImageView>
+                <VBox spacing="10">
+                    <Label style="-fx-text-fill: #f1c40f; -fx-font-size: 28;" text="Dragón Tecnoquímico" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Vida: 5730 - 10290" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Beneficio: 6-24% de daño adicional en enemigos con más salud actual que tú." />
+                </VBox>
+            </HBox>
+
+            <!-- Dragón Anciano -->
+            <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 5);">
+                <ImageView fx:id="dragonAncianoImage" fitHeight="150" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imagenes/iconoDrake.jpg" />
+                    </image>
+                </ImageView>
+                <VBox spacing="10">
+                    <Label style="-fx-text-fill: #f1c40f; -fx-font-size: 28;" text="Dragón Anciano" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Vida: 5700 - 10290" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Beneficio: Da a su portador un aumento en el daño de ataque y habilidades, además ejecutar al enemigo por debajo del 20% de vida." />
+                </VBox>
+            </HBox>
+            <!-- Escurridizo de la grieta -->
+             <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, black, 10, 0.5, 0, 5);">
+                <ImageView fx:id="ScuttleCrab" fitHeight="150" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../imagenes/scuttle_crab.jpg" />
+                    </image>
+                </ImageView>
+                <VBox spacing="10">
+                    <Label style="-fx-text-fill: #f1c40f; -fx-font-size: 28;" text="Escurridizo de la grieta" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Vida: 1550 - 5270" />
+                    <Label style="-fx-text-fill: #ecf0f1; -fx-font-size: 18;" text="Al ser derrotado, otorga 55-121(según nivel) de oro y proporciona visión en la zona donde muere." />
+                </VBox>
+            </HBox>
+
+        </VBox>
+    </ScrollPane>
+</AnchorPane>

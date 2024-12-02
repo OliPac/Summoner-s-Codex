@@ -24,4 +24,6 @@ Este proyecto es una aplicación multiplataforma que funciona como una wiki de L
 
 
 #Instalación
+Esta en este enlace de google drive debido a su tamaño 
+https://drive.google.com/file/d/18b02al7-_aoE7aw5WpBgHctaUA_vKsh2/view?usp=sharing 
 Es un ejecutable doble click y iniciará un menú de instalación para poder utilizarlo

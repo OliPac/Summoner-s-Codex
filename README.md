@@ -1,7 +1,7 @@
 # Summoner's Codex
 
 ## Descripción
-Este proyecto es una aplicación multiplataforma que funciona como una wiki de League of Legends. Esta aplicación permitirá a los usuarios consultar información detallada sobre los campeones, 
+Este proyecto es una aplicación multiplataforma que funciona como una wiki de League of Legends. Esta aplicación permitirá a los usuarios consultar información detallada sobre los campeones y otros detalles del juego.
 
 ## Índice
 - Las clases están dentro de src/main/java:

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="864.0" maxWidth="1536.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.summonerscodex.controller.Builds.ConstruccionBuildController">
+   <children>
+
+      <!-- GridPane con el contenido principal -->
+      <GridPane fx:id="gridPane" alignment="CENTER" hgap="15" prefHeight="864" prefWidth="1536" style="-fx-background-color: #1C1C1C;" vgap="10.0">
+          <!-- Título -->
+          <Label style="-fx-font-size: 36px; -fx-font-family: 'Arial Black'; -fx-font-weight: bold; -fx-text-fill: #FFD700;" text="Construcción de Builds" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+      
+          <!-- Selección de Campeón -->
+          <Label style="-fx-font-size: 18px; -fx-font-family: 'Arial'; -fx-text-fill: white;" text="Selecciona un Campeón:" GridPane.rowIndex="1" />
+          <ComboBox fx:id="comboBoxCampeones" prefWidth="200" style="-fx-background-color: white; -fx-text-fill: white; -fx-font-size: 14px; -fx-selection-bar: #f1c40f; -fx-border-color: #FFD700;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      
+          <!-- Selección de Objeto -->
+          <Label style="-fx-font-size: 18px; -fx-font-family: 'Arial'; -fx-text-fill: white;" text="Selecciona un Objeto:" GridPane.rowIndex="3" />
+          <ComboBox fx:id="comboBoxObjetos" prefWidth="200" style="-fx-background-color: white; -fx-text-fill: white; -fx-font-size: 14px; -fx-selection-bar: #f1c40f; -fx-border-color: #FFD700;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      
+          <!-- Lista de Objetos Seleccionados -->
+          <Label style="-fx-font-size: 18px; -fx-font-family: 'Arial'; -fx-text-fill: white;" text="Objetos Seleccionados:" GridPane.rowIndex="7" />
+          <ListView fx:id="listViewObjetos" maxWidth="300.0" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: white; -fx-text-fill: white;" GridPane.columnSpan="2" GridPane.hgrow="NEVER" GridPane.rowIndex="8" />
+      
+          <!-- Agregar y Eliminar Objetos -->
+          <Button fx:id="btnAgregarObjeto" prefWidth="200" style="-fx-background-color: #f1c40f; -fx-text-fill: black; -fx-font-size: 16px; -fx-background-radius: 5;" text="Agregar Objeto" GridPane.rowIndex="9" />
+          <Button fx:id="btnEliminarObjeto" prefWidth="200" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 5;" text="Eliminar Objeto" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      
+          <!-- Guardar Build -->
+          <Button fx:id="btnGuardarBuild" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: #1ABC9C; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 5;" text="Guardar Build" GridPane.columnSpan="2" GridPane.rowIndex="14" />
+      
+          <!-- Mostrar la Build Final -->
+          <Label style="-fx-font-size: 24px; -fx-font-family: 'Arial Black'; -fx-font-weight: bold; -fx-text-fill: #FFD700;" text="Build Final" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+          <HBox fx:id="hBoxBuild" spacing="10" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="12">
+            <children>
+               <ImageView fx:id="imageViewCampeon1" fitHeight="100.0" fitWidth="100.0" />
+               <ImageView fx:id="imageViewObjeto1" fitHeight="100.0" fitWidth="100.0" layoutX="10.0" layoutY="10.0" />
+               <ImageView fx:id="imageViewObjeto2" fitHeight="100.0" fitWidth="100.0" layoutX="120.0" layoutY="10.0" />
+               <ImageView fx:id="imageViewObjeto3" fitHeight="100.0" fitWidth="100.0" layoutX="230.0" layoutY="10.0" />
+               <ImageView fx:id="imageViewObjeto4" fitHeight="100.0" fitWidth="100.0" layoutX="340.0" layoutY="10.0" />
+               <ImageView fx:id="imageViewObjeto5" fitHeight="100.0" fitWidth="100.0" layoutX="450.0" layoutY="10.0" />
+               <ImageView fx:id="imageViewObjeto6" fitHeight="100.0" fitWidth="100.0" layoutX="560.0" layoutY="10.0" />
+            </children>
+         </HBox>
+         
+         <!-- Botón Regresar al Mapa -->
+         <Button fx:id="btnRegresar" alignment="BOTTOM_RIGHT" onAction="#RegresarMenu" style="-fx-background-color: #f1c40f; -fx-text-fill: black; -fx-font-size: 18; -fx-padding: 10; -fx-background-radius: 5;" text="Regresar al Menu" GridPane.rowIndex="15" />
+      
+         <!-- Definir las columnas y filas -->
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+      </GridPane>
+   </children>
+</AnchorPane>

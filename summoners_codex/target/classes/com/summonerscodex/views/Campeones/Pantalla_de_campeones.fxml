@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.summonerscodex.controller.Campeones.PantallaCampeonesController">
+   <children>
+      <HBox layoutX="14.0" layoutY="14.0" spacing="10">
+          <TextField fx:id="textFieldBuscar" promptText="Buscar campeón..." />
+        <Button fx:id="btnRegresar" layoutX="50" layoutY="20" onAction="#RegresarMenu" style="-fx-background-color: #f1c40f; -fx-text-fill: black; -fx-font-size: 18; -fx-padding: 10; -fx-background-radius: 5;" text="Regresar al Menu Principal" />
+          
+      </HBox>
+
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="14.0" layoutY="62.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
+         <content>
+            <GridPane fx:id="imageContainer" alignment="TOP_LEFT" hgap="10" style="-fx-background-color: #2c3e50;" vgap="10">
+               <padding>
+                  <Insets bottom="10" left="10" right="10" top="10" />
+               </padding>
+            </GridPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

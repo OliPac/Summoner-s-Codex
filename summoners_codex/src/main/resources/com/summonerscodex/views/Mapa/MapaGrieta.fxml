@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.*?>
+
+
+<StackPane alignment="TOP_LEFT" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.summonerscodex.controller.Mapa.MapaController">
+    <children>
+        <!-- Mapa -->
+        <ImageView fx:id="mapImage" fitHeight="864.0" fitWidth="1536.0" />
+
+        <!-- Pane para posicionar los íconos -->
+        <Pane>
+        	  <Button fx:id="btnRegresar" text="Regresar a Menú Principal" layoutX="50" layoutY="50" onAction="#RegresarMenu">
+        	  <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="iconBaron" fitHeight="50" fitWidth="50" layoutX="480" layoutY="240" onMouseClicked="#showBaronInfo" />
+             <ImageView fx:id="iconCangrejo" fitHeight="50" fitWidth="50" layoutX="420" layoutY="280" onMouseClicked="#showBaronInfo" />
+            <ImageView fx:id="iconoGromp" fitHeight="50" fitWidth="50" layoutX="240" layoutY="330" onMouseClicked="#showMonsterInfo" />
+            <ImageView fx:id="iconBlue" fitHeight="50" fitWidth="50" layoutX="380" layoutY="355" onMouseClicked="#showMonsterInfo" />
+            <ImageView fx:id="iconLobos" fitHeight="50" fitWidth="50" layoutX="380" layoutY="450" onMouseClicked="#showMonsterInfo" />
+             <ImageView fx:id="iconoPicuchillo" fitHeight="50" fitWidth="50" layoutX="660" layoutY="510" onMouseClicked="#showMonsterInfo" />
+              <ImageView fx:id="iconoRed" fitHeight="50" fitWidth="50" layoutX="750" layoutY="580" onMouseClicked="#showMonsterInfo" />
+               <ImageView fx:id="iconoKrug" fitHeight="50" fitWidth="50" layoutX="810" layoutY="660" onMouseClicked="#showMonsterInfo" />
+               <ImageView fx:id="iconCangrejo2" fitHeight="50" fitWidth="50" layoutX="1000" layoutY="520" onMouseClicked="#showDrakeInfo" />
+               <ImageView fx:id="iconoDrake" fitHeight="50" fitWidth="50" layoutX="930" layoutY="560" onMouseClicked="#showDrakeInfo" />
+                <ImageView fx:id="iconoTorre" fitHeight="50" fitWidth="50" layoutX="160" layoutY="700" onMouseClicked="#showTorreInfo" />
+        </Pane>
+    </children>
+</StackPane>

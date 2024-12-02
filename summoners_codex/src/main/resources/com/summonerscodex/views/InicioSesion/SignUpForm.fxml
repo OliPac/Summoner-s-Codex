@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="signUpForm" alignment="CENTER" prefHeight="500.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom, #2c3e50, #34495e); -fx-padding: 30; -fx-border-radius: 15; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.summonerscodex.controller.Inicio_sesion.SignUpFormController">
+  
+  <children>
+    <!-- Título -->
+    <Label style="-fx-text-fill: #f1c40f;" text="Registrarse">
+      <font>
+        <Font name="Serpentine-Bold" size="36.0" />
+      </font>
+      <effect>
+        <DropShadow color="#f39c12" radius="5.0" />
+      </effect>
+    </Label>
+
+    <!-- Contenedor de campos de entrada -->
+    <VBox spacing="15.0" style="-fx-background-color: rgba(255, 255, 255, 0.1); -fx-padding: 30; -fx-border-color: #f39c12; -fx-border-radius: 10px; -fx-background-radius: 10px;">
+      <children>
+        <!-- Campo Correo Electrónico -->
+        <Label style="-fx-text-fill: #dfe6e9;" text="Correo electrónico">
+          <font>
+            <Font name="Serpentine-Bold" size="18.0" />
+          </font>
+        </Label>
+        <TextField fx:id="textCorreo" promptText="Ej. Admin@gmail.com" style="-fx-background-color: rgba(52, 73, 94, 0.8); -fx-text-fill: white; -fx-border-color: #f39c12; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+          <effect>
+            <DropShadow color="#000000" radius="3.0" />
+          </effect>
+        </TextField>
+
+        <!-- Campo Nombre de Usuario -->
+        <Label style="-fx-text-fill: #dfe6e9;" text="Nombre de Usuario">
+          <font>
+            <Font name="Serpentine-Bold" size="18.0" />
+          </font>
+        </Label>
+        <TextField fx:id="textUsuario" promptText="Ej. Admin" style="-fx-background-color: rgba(52, 73, 94, 0.8); -fx-text-fill: white; -fx-border-color: #f39c12; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+          <effect>
+            <DropShadow color="#000000" radius="3.0" />
+          </effect>
+        </TextField>
+
+        <!-- Campos de Contraseña -->
+        <Label style="-fx-text-fill: #dfe6e9;" text="Contraseña">
+          <font>
+            <Font name="Serpentine-Bold" size="18.0" />
+          </font>
+        </Label>
+        <PasswordField fx:id="textContraseña" promptText="Ej. 1234" style="-fx-background-color: rgba(52, 73, 94, 0.8); -fx-text-fill: white; -fx-border-color: #f39c12; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+          <effect>
+            <DropShadow color="#000000" radius="3.0" />
+          </effect>
+        </PasswordField>
+
+        <Label style="-fx-text-fill: #dfe6e9;" text="Confirmar Contraseña">
+          <font>
+            <Font name="Serpentine-Bold" size="18.0" />
+          </font>
+        </Label>
+        <PasswordField fx:id="textConfirmarContraseña" promptText="Ej. 1234" style="-fx-background-color: rgba(52, 73, 94, 0.8); -fx-text-fill: white; -fx-border-color: #f39c12; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+          <effect>
+            <DropShadow color="#000000" radius="3.0" />
+          </effect>
+        </PasswordField>
+      
+          <!-- Botones de Acción -->
+          <HBox alignment="CENTER_RIGHT" spacing="20.0">
+            <children>
+              <Button fx:id="btnLimpiarRegistrarse" onAction="#borradoTextoRegistrar" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-border-color: #f39c12; -fx-padding: 10px 20px;" text="Limpiar">
+                <font>
+                  <Font name="Serpentine-Bold" size="20.0" />
+                </font>
+                <effect>
+                  <DropShadow color="#000000" radius="5.0" />
+                </effect>
+              </Button>
+              
+              <Button fx:id="btnIngresar" onAction="#validarCorreo" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-border-color: #f39c12; -fx-padding: 10px 20px;" text="Registrar">
+                <font>
+                  <Font name="Serpentine-Bold" size="20.0" />
+                </font>
+                <effect>
+                  <DropShadow color="#000000" radius="5.0" />
+                </effect>
+              </Button>
+            </children>
+          </HBox>
+      </children>
+    </VBox>
+  </children>
+</VBox>
